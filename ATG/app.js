@@ -20,8 +20,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.send("Everything working fine here!!");
-  return;
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.get("/reset-password", (req, res) => {
