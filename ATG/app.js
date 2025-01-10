@@ -19,15 +19,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+
+app.use("/api/v1/user", authRouter);
 
 app.get("/reset-password", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "reset-password.html"));
 });
 
-app.use("/api/v1/user", authRouter);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+
 
 const port = process.env.PORT || 3001;
 
